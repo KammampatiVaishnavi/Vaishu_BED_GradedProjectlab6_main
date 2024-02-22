@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+       href="https://cdn.jsdelivr.net/npn/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+ <link rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Student Directory</title>
+<style type="text/css">
+.tbl{
+    font-family: sans-serif;
+    font-size: x-large;
+    font-style: oblique;
+}
+</head>
+<body>
+    
+                 <div class="container mt-5 pt-2 border"> 
+                  <h3 style="text-align: center; color: green">User Login Page</h3> 
+                  <hr>
+                  <form  th:action="@{/authenticationTheUser}" method="post" th:object="${student}">
+                 <!--- error message --->
+                        <div th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid username or password.</div>
+                        </div>
+                        
+                  <!--- logout message --->
+                        <div th:if="${param.logout}">
+                        <div class="alert alert-info">You have been logged out.</div>
+                        </div>
+                        
+                 <div class="form-group">
+                     <input type="text"
+                           class="form-control" name="username" 
+                              placeholder="Enter User Name or Email"/>
+                  </div>
+                
+                  <div class="form-group">
+                   <input type="password"
+                           class="form-control" name="password" th:field="*{title}"
+                            placeholder="Enter Password"/>
+                  </div>
+                 
+                   <div class="form-group">
+                     <button type="submit" class="btn btn-warning btn-lg">Log In</button>
+                  </div>
+                 <div class="form-group">
+                     <span>New user? <a th:href="@{/registration}">Register here</a></span> 
+                     </div>
+                 
+                  </form>
+                  
+                  
+                 </body>
+</html>

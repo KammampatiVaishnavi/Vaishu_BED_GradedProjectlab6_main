@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+       href="https://cdn.jsdelivr.net/npn/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+ <link rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Student Directory</title>
+<style type="text/css">
+.tbl{
+    font-family: sans-serif;
+    font-size: x-large;
+    font-style: oblique;
+}
+</head>
+<body>
+    
+                 <div class="container mt-5 pt-2 border"> 
+                  <h3 style="text-align: center; color: green">User Login Page</h3> 
+                  <hr>
+          
+            <form  th:action="@{/regsuccess}" method="post" th:object="${user}">
+            <!-- success message-->
+            <div th:if="alert alert-info">You're successfully registered to our awesome app!</div>
+            
+          <div class="form-group">
+                <label class="control-label" for="firstname"> name </label><input
+                   id="firstname" class="form-control" 
+                   th:field="*{name}" required autofocus="autofocus" />
+                   </div>
+           <div class="form-group">
+                <label class="control-label" for="lastname"> lastname </label><input
+                   id="lastname" class="form-control" 
+                   th:field="*{username}" required autofocus="autofocus" />
+                   </div>
+           <div class="form-group">
+                <label class="control-label" for="email"> Email</label><input
+                   id="email" class="form-control" 
+                   th:field="*{email}" required autofocus="autofocus" />
+                   </div>
+            <div class="form-group">
+                <label class="control-label" for="password"> Password </label><input
+                   id="password" class="form-control" type="password"
+                   th:field="*{password}" required autofocus="autofocus" />
+                   </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Register</button>
+                               <span>Already Registered? <a th:field="@{/login}" >Login here </a></span>
+                   </div>
+                 
+                  </form>
+                  
+                  
+                 </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+       href="https://cdn.jsdelivr.net/npn/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+ <link rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Student Directory</title>
+<style type="text/css">
+.tbl{
+    font-family: sans-serif;
+    font-size: x-large;
+    font-style: oblique;
+}
+</head>
+<body>
+      <div class="container mt-5 pt-2">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <form class="from-inline" action="#">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-success mr-sm-2 btn-lg" type="submit">Search</button>
+            </form>
+          <u1 class="navbar-nav">
+               <li class="nav-item mr-sm-2"><a class="btn btn-warning btn-lg"
+                    href="/students/showStudentFormForAdd">Add Student</a></li>
+                    <li class="nav-item mr-sm-2"><a class="btn btn-warning btn-lg"
+                    href="/students/list ">Show Students</a></li>
+               <li class="nav-item mr-sm-2">
+               <form action="form-inline" th:action="@{/logout}" method="post">
+                <button class="btn btn-warning mr-sm-2 btn-lg" type="submit">logout</button>
+                  </form>
+                    </u1>
+                   </nav>
+                 </div>
+                 <div class="container mt-5 pt-2 border"> 
+                  <h3 style="text-align: center; color: red">Student Directory</h3> 
+                  <hr>
+                  <table class="table table-striped">
+                  <thead>
+                        <tr>
+                            <th>S.No</th>
+                             <th>First Name</th>
+                             <th>Last Name</th>
+                             <th>Course</th>
+                             <th>Country</th>
+                             </tr>
+                           </thead> 
+                           <tbody>
+                              <tr th:each="student, rCount: $(students)">
+                                  <td th:text="$(rCount.count)"></td>
+                                   <td th:text="$(student.firstName)"></td>
+                                    <td th:text="$(student.lastName)"></td>
+                                     <td th:text="$(student.course)"></td>
+                                      <td th:text="$(student.country)"></td>
+                                        <td>
+                           <a th:href="@{/students/studentFormForEdit/{id}(id=${student.id})}">
+                           <i class="fa fa-edit" style="font-size: 28px;color:blue"></i></a>
+                            <a th:href="@{/students/delete/{id}(id=${student.id})}"
+                            onclick="if(!(confirm('Are you sure want to delete this book?'))) return false<i
+                             class="fa fa-trash" style="font-size: 28px;color:red"></i></a></td>
+                              </tr>    
+                  </table>
+                 </div>
+                 </body>
+</html>
